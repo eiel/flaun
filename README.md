@@ -1,5 +1,9 @@
 # Flaun
 
+[![Build Status](https://travis-ci.org/eiel/flaun.png?branch=master)](https://travis-ci.org/eiel/flaun)
+[![Coverage Status](https://coveralls.io/repos/eiel/flaun/badge.png?branch=master)](https://coveralls.io/r/eiel/flaun)
+[![Code Climate](https://codeclimate.com/github/eiel/flaun.png)](https://codeclimate.com/github/eiel/flaun)
+
 TODO 英語で書きなおす。
 
 リモートのサーバからブラウザでアクセスすることを再現できます。
