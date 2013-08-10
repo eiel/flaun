@@ -7,7 +7,7 @@ Given(/^should open "(.*?)"$/) do |uri|
 end
 
 Given(/^should ssh "(.*?)"$/) do |host|
-  Net::SSH.should_receive(:start).with(host, ENV['USER']) do |a,b, &block|
+  Net::SSH.should_receive(:start).with(host, 'bar') do |a,b, &block|
     ssh = double
 
     h = 'localhost'
