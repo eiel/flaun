@@ -26,30 +26,49 @@ module Flaun
   end
 
   def start(target_name = nil, config_file = nil)
-    config_file ||= Pathname.new("~/.flaun").expand_path.to_s
+    config_file ||= default_config_file
     unless File.exist? config_file
-      $stderr.puts 'Plaese, create file ~/.flaun'
+      not_found_config_file
       exit 1
     end
     config = config_load(open(config_file).read, config_file)
 
     if target_name.nil?
-      $stderr.puts 'select target:'
-      puts config.targets.keys
+      not_target_name config
       exit 1
     end
 
     target = config[target_name.to_sym]
 
-    Net::SSH.start(target.host, target.user ) do |ssh|
-      ssh.forward.local(
-        target.forward_port,
-        target.forward_host,
-        target.forward_host_port)
-
-      Launchy.open( target.access_url )
-
-      ssh.loop { true }
-    end
+    ssh_forward_and_launch target
   end
+
+  private
+
+    def default_config_file
+      Pathname.new("~/.flaun").expand_path.to_s
+    end
+
+    def not_found_config_file
+      $stderr.puts 'Plaese, create file ~/.flaun'
+    end
+
+    def not_target_name(config)
+      $stderr.puts 'select target:'
+      puts config.targets.keys
+    end
+
+    def ssh_forward_and_launch(target)
+      Net::SSH.start(target.host, target.user ) do |ssh|
+        ssh.forward.local(
+          target.forward_port,
+          target.forward_host,
+          target.forward_host_port)
+
+        Launchy.open( target.access_url )
+
+        ssh.loop { true }
+      end
+    end
+  # end private
 end
