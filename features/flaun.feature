@@ -6,6 +6,7 @@ Scenario: Open remote host
   port 8010
 
   target :sample do
+    user 'bar'
     host 'eiel.info'
     path 'foo'
   end

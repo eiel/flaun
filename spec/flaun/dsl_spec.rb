@@ -17,3 +17,20 @@ describe Flaun::DSL do
     end
   end
 end
+
+describe Flaun::DSLTarget do
+  let(:dsl) { Flaun::DSLTarget.new(config) }
+  let(:config) { Flaun::Config.new }
+
+  describe '#user' do
+    subject { dsl.user user }
+    context "when user is 'bar'" do
+      let(:user) { 'bar' }
+
+      it 'config.user eq "user"' do
+        subject
+        expect( dsl.config.user ).to eq(user)
+      end
+    end
+  end
+end
