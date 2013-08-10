@@ -26,6 +26,10 @@ module Flaun
       @config = ::Flaun::TargetConfig.new(config)
     end
 
+    def user(user)
+      @config.user = user
+    end
+
     def port(port)
       @config.forward_host_port = port
     end

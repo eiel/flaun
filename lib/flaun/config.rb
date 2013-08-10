@@ -14,14 +14,16 @@ module Flaun
 
   class TargetConfig
     attr_accessor :forward_host_port, :host, :path
+    attr_reader :user
 
     def initialize(config)
       @config = config
       @forward_host_port = 80
+      @user = ENV['USER']
     end
 
-    def user
-      ENV['USER']
+    def user=(user)
+      @user = user
     end
 
     def forward_port
