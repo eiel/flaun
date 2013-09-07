@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tomohiko Himura"]
   spec.email         = ["eiel.hal@gmail.com"]
   spec.description   = %q{launch browser after ssh local forward}
-  spec.summary       = %q{launchBrowesr after ssh local forward}
+  spec.summary       = %q{launch browser after ssh local forward}
   spec.homepage      = "https://github.com/eiel/flaun"
   spec.license       = "MIT"
 
