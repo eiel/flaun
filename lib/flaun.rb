@@ -50,7 +50,7 @@ module Flaun
     end
 
     def not_found_config_file
-      $stderr.puts 'Plaese, create file ~/.flaun'
+      $stderr.puts 'Please, create file ~/.flaun'
     end
 
     def not_target_name(config)
@@ -59,13 +59,13 @@ module Flaun
     end
 
     def ssh_forward_and_launch(target)
-      Net::SSH.start(target.host, target.user ) do |ssh|
+      Net::SSH.start(target.host, target.user) do |ssh|
         ssh.forward.local(
           target.forward_port,
           target.forward_host,
           target.forward_host_port)
 
-        Launchy.open( target.access_url )
+        Launchy.open(target.access_url)
 
         ssh.loop { true }
       end
